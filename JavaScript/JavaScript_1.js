@@ -39,7 +39,7 @@ my_gradient.addColorStop(0.5, "red");
 my_gradient.addColorStop(1, "white");
 ctx.fillStyle = my_gradient;
 ctx.fillRect(20, 20, 150, 100);
-}
+
     
 
 
