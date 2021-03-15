@@ -1,5 +1,5 @@
 const Calculator = {
-    Display_Value: 'O',
+    Display_Value: '0',
     First_Operand: null,
     Wait_Second_Operand: false,
     operator: null,
@@ -11,7 +11,7 @@ function Input_Digit(digit) {
         Calculator.Display_Value = digit;
         Calculator.Wait_Second_Operand = false;
     } else {
-        Calculator.Display_Value = Display_Value === 'O' ? digit : Display_Value + digit;
+        Calculator.Display_Value = Display_Value === '0' ? digit : Display_Value + digit;
     }
 }
 function Input_Decimal(dot) {
@@ -31,8 +31,8 @@ function Handle_Operator(Next_Operator) {
     }
     if (First_Operand == null) {
         Calculator.First_Operand = Value_of_Input;
-    } else if (operator) {
-        const Value_Now = First_Operand || O;
+    } else if (Operator) {
+        const Value_Now = First_Operand || 0;
         let result = perform_Calculation[Operator](Value_Now, Value_of_Input);
         reslut = Number(result).toFixed(9)
         result = (result * 1).toString()
@@ -44,11 +44,11 @@ function Handle_Operator(Next_Operator) {
 }
 
 const Perform_Calculation = {
-    '/': (First_Operand,Second_Operand) => First_Operand / Second_Operand,
-    '*': (First_Operand,Second_Operand) => First_Operand * Second_Operand,
-    '+': (First_Operand,Second_Operand) => First_Operand + Second_Operand,
-    '-': (First_Operand,Second_Operand) => First_Operand - Second_Operand,
-    '=': (First_Operand,Second_Operand) => First_Operand 
+    '/': (First_Operand, Second_Operand) => First_Operand / Second_Operand,
+    '*': (First_Operand, Second_Operand) => First_Operand * Second_Operand,
+    '+': (First_Operand, Second_Operand) => First_Operand + Second_Operand,
+    '-': (First_Operand, Second_Operand) => First_Operand - Second_Operand,
+    '=': (First_Operand, Second_Operand) => First_Operand 
 };
 
 function Calculator_Reset() {
@@ -59,7 +59,7 @@ function Calculator_Reset() {
 }
 function Update_Display() {
     const Display = document.querySelector('.calculator-screen');
-    Display.Value = Calculator.Display_Value;
+    Display.value = Calculator.Display_Value;
 }
 
 Update_Display();
