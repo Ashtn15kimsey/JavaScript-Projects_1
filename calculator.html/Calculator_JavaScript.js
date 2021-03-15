@@ -16,7 +16,7 @@ function Input_Digit(digit) {
 }
 function Input_Decimal(dot) {
     if (Calculator.Wait_Second_Operand === true) return;
-    if (Calculator.Display_Value.Includes(dot)) {
+    if (Calculator.Display_Value.includes(dot)) {
         Calculator.Display_Value += dot;
     }   
 }
@@ -25,7 +25,7 @@ function Input_Decimal(dot) {
 function Handle_Operator(Next_Operator) {
     const { First_Operand,Display_Value,Operator} = Calculator
     const Value_of_Input = parseFloat(Display_Value);
-    if (Operator && Calculator.Wait_Second_Operand) {
+    if (Operator && Calculator.Wait_Second_Operator) {
         Calculator.operator = Next_Operator;
         return;
     }
@@ -33,14 +33,12 @@ function Handle_Operator(Next_Operator) {
         Calculator.First_Operand = Value_of_Input;
     } else if (Operator) {
         const Value_Now = First_Operand || 0;
-        let result = perform_Calculation[Operator](Value_Now, Value_of_Input);
-        reslut = Number(result).toFixed(9)
-        result = (result * 1).toString()
-        Calculator.Display_Value = parseFloat(reslut);
+        let result = Perform_Calculation[Operator](Value_Now, Value_of_Input);
+         Calculator.Display_Value = parseFloat(result);
         Calculator.First_Operand = parseFloat(reslut);
     }
     Calculator.Wait_Second_Operand = true;
-    Calculator.operator = Next_Operator;
+    Calculator.Operator = Next_Operator;
 }
 
 const Perform_Calculation = {
@@ -48,7 +46,7 @@ const Perform_Calculation = {
     '*': (First_Operand, Second_Operand) => First_Operand * Second_Operand,
     '+': (First_Operand, Second_Operand) => First_Operand + Second_Operand,
     '-': (First_Operand, Second_Operand) => First_Operand - Second_Operand,
-    '=': (First_Operand, Second_Operand) => First_Operand 
+    '=': (First_Operand, Second_Operand) => Second_Operand 
 };
 
 function Calculator_Reset() {
