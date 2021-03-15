@@ -1,17 +1,17 @@
 const Calculator = {
-    Display_Value: '0',
+    Display_Value: 'O',
     First_Operand: null,
     Wait_Second_Operand: false,
     operator: null,
 };
 
 function Input_Digit(digit) {
-    const { Display_Value,Wait_Second_Operand} = Calculator;
-    if (Wait_Second_Operand===true) {
-        Calculator.Display_Value=digit;
-        Calculator.Wait_Second_Operand=false;
+    const { Display_Value, Wait_Second_Operand} = Calculator;
+    if (Wait_Second_Operand === true) {
+        Calculator.Display_Value = digit;
+        Calculator.Wait_Second_Operand = false;
     } else {
-        Calculator.Display_Value = Display_Value === '0' ? digit : Display_Value + digit;
+        Calculator.Display_Value = Display_Value === 'O' ? digit : Display_Value + digit;
     }
 }
 function Input_Decimal(dot) {
@@ -59,7 +59,7 @@ function Calculator_Reset() {
 }
 function Update_Display() {
     const Display = document.querySelector('.calculator-screen');
-    display.value = Calculator.Display_Value;
+    Display.Value = Calculator.Display_Value;
 }
 
 Update_Display();
@@ -70,7 +70,7 @@ keys.addEventListener('click', (event)=>{
         return;
 }
 
-if (target.addEventListener.contains('operator')) {
+if (target.classList.contains('operator')) {
     Handle_Operator(target.value);
     Update_Display();
     return;
