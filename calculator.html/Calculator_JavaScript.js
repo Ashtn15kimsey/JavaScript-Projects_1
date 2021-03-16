@@ -35,7 +35,7 @@ function Handle_Operator(Next_Operator) {
         const Value_Now = First_Operand || 0;
         let result = Perform_Calculation[Operator](Value_Now, Value_of_Input);
          Calculator.Display_Value = parseFloat(result);
-        Calculator.First_Operand = parseFloat(reslut);
+        Calculator.First_Operand = parseFloat(result);
     }
     Calculator.Wait_Second_Operand = true;
     Calculator.Operator = Next_Operator;
@@ -76,7 +76,7 @@ if (target.classList.contains('operator')) {
 if (target.classList.contains('decimal')) {
     Input_Decimal(target.value);
     Update_Display();
-    retrun;
+    return;
 }
 if (target.classList.contains('all-clear')) {
     Calculator_Reset();
